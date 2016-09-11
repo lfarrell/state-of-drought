@@ -1,0 +1,6 @@
+.idea
+.DS_Store
+raw_data/*
+data/*
+agg_data/data/*
+node_modules/*
