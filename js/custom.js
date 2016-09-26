@@ -113,11 +113,13 @@ queue()
             return d.year == "00" && d.month == "01";
         });
 
+        d3.selectAll("circle").remove();
         var circles = map_svg.selectAll("circle")
             .data(centers);
 
         for(var i=0; i<5; i++) {
             circles.enter().append("circle");
+
             circles.attr("class", "level_" + i)
                 .attr("cx", function(d) {
                     return projection([d.lng, d.lat])[0];
