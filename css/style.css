@@ -29,7 +29,7 @@ h1 {
 button {
     color: black;
 }
-#slider {
+#slider, #pct_legend {
     fill: white;
 }
 
@@ -38,6 +38,7 @@ circle {
     stroke-width: 2.1;
     opacity: .9;
     pointer-events: all;
+    stroke: white;
 }
 
 #base_map path{

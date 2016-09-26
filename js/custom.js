@@ -13,8 +13,17 @@ queue()
     var date_text = d3.select("#date-text");
 
     data.forEach(function(d) {
+      //  var coords = _.find(centers, function(g) {
+      //     return d.state === g.state;
+      //  });
+
         d.date = date_parse(d.month + '-' + d.year);
         d.season = findSeason(d.month);
+
+       /* if(coords !== undefined) {
+            d.lat = coords.lat;
+            d.lng = coords.lng;
+        } */
     });
 
     var map_svg = d3.select('#map').append('svg')
@@ -87,8 +96,7 @@ queue()
         path = path.projection(projection);
 
         d3.select("#map svg").attr('height', map_height)
-            .attr('width', width)
-           // .call(zoom);
+            .attr('width', width);
 
         var map_draw = map_svg.selectAll("path")
             .data(us.features);
@@ -105,14 +113,11 @@ queue()
             return d.year == "00" && d.month == "01";
         });
 
-        var circ = map_svg.selectAll("circle");
+        var circles = map_svg.selectAll("circle")
+            .data(centers);
 
         for(var i=0; i<5; i++) {
-            var centered = centers;
-            var circles = circ.data(centered);
-
             circles.enter().append("circle");
-
             circles.attr("class", "level_" + i)
                 .attr("cx", function(d) {
                     return projection([d.lng, d.lat])[0];
@@ -124,9 +129,11 @@ queue()
 
             var selected = d3.selectAll("circle.level_" + i);
             note(center_vals, selected);
-
-            circles.exit().remove();
         }
+
+        circles.exit().remove();
+
+        pctLegend("#pct_legend");
 
         // Seasons
         var us_all = data.filter(function(d) {
@@ -249,6 +256,49 @@ queue()
             default:
                 return "unknown";
         }
+    }
+
+    function pctLegend(selector) {
+        var compare = document.querySelectorAll(selector + ' svg');
+        if(compare.length) return;
+
+        var vals = _.range(3, 25, 5);
+        var width = 350;
+        var spacing = [60, 80, 110, 150, 200];
+
+        var legend = d3.select(selector)
+            .append("svg")
+            .attr("width", width)
+            .attr("height", 55)
+            .attr("class", "legend");
+
+        legend.append("text")
+            .attr("x", 1)
+            .attr("y", 35)
+            .attr("height",30)
+            .attr("width", 25)
+            .text("Smaller");
+
+        legend.selectAll('g').data(vals)
+            .enter()
+            .append('g')
+            .attr("width", width)
+            .each(function(d, i) {
+                var g = d3.select(this);
+
+                g.append("circle")
+                    .attr("cx", spacing[i])
+                    .attr("cy", 15)
+                    .attr("r", function(d) { return d; })
+                    .translate([0, 15]);
+            });
+
+        legend.append("text")
+            .attr("x", 233)
+            .attr("y", 35)
+            .attr("height",30)
+            .attr("width", 25)
+            .text("Greater");
     }
 
     var rows = d3.selectAll('.row');
