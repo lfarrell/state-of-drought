@@ -29,8 +29,16 @@ h1 {
 button {
     color: black;
 }
-#slider, #pct_legend {
+#slider, #pct_legend, #color_legend text {
     fill: white;
+}
+
+#color_legend rect {
+    stroke: none;
+}
+
+.offset {
+    margin-left: 155px
 }
 
 circle {

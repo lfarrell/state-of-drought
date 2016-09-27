@@ -113,7 +113,7 @@ queue()
             return d.year == "00" && d.month == "01";
         });
 
-        d3.selectAll("circle").remove();
+        d3.selectAll("#map circle").remove();
         var circles = map_svg.selectAll("circle")
             .data(centers);
 
@@ -136,6 +136,7 @@ queue()
         circles.exit().remove();
 
         pctLegend("#pct_legend");
+        colorLegend("#color_legend", colors);
 
         // Seasons
         var us_all = data.filter(function(d) {
@@ -272,7 +273,8 @@ queue()
             .append("svg")
             .attr("width", width)
             .attr("height", 55)
-            .attr("class", "legend");
+            .attr("class", "legend")
+            .translate([35, 0]);
 
         legend.append("text")
             .attr("x", 1)
@@ -302,6 +304,47 @@ queue()
             .attr("width", 25)
             .text("Greater");
     }
+
+    function colorLegend(selector, colors) {
+            var compare = document.querySelectorAll(selector + ' svg');
+            if(compare.length) return;
+
+            var keys = ['Abnormally Dry', 'Moderate', 'Severe', 'Extreme', 'Exceptional'];
+            var width = 450;
+
+            var legend = d3.select(selector)
+                .append("svg")
+                .attr("width", width)
+                .attr("height", 55)
+                .attr("class", "legend");
+
+            var j = 10;
+
+            legend.selectAll('g').data(keys)
+                .enter()
+                .append('g')
+                .attr("width", width)
+                .each(function(d, i) {
+                    var g = d3.select(this);
+                    g.attr("class", colors[i] + " legend_value")
+
+                    g.append("rect")
+                        .attr("x", j)
+                        .attr("y", 15)
+                        .attr("width", 10)
+                        .attr("height", 10)
+                        .style("fill", colors[i]);
+
+                    g.append("text")
+                        .attr("x", j + 15)
+                        .attr("y", 25)
+                        .attr("height",30)
+                        .attr("width", d.length * 50)
+                        .text(d);
+                    var add = i == 0 ? 50 : 40;
+                    j += (d.length * 5) + add;
+                });
+        }
 
     var rows = d3.selectAll('.row');
     rows.classed('opaque', false);
