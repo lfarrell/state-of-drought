@@ -22,7 +22,7 @@
             <h3 class="text-center">A Look at Drought in the United States (2000-2016)</h3>
         </div>
     </div>
-    <div class="row charts opaque">
+    <div class="row charts hide">
         <div class="col-xs-12 col-offset-sm-1 col-sm-10 col-lg-offset-1 col-lg-10">
             <p>Drought is often seen as problem that mainly affects the western United States</p>
             <p>Snow comes in a variety of forms. It can be light and airy, almost dry, or it can heavy and dense. For example,
@@ -44,19 +44,21 @@
             <button id="pause">Pause</button>
             <button id="stop">Stop</button>
             <h2 class="text-center" id="date-text">January 2000</h2>
-
         </div>
 
         <div id="pct_legend" class="col-xs-12 col-offset-sm-1 col-sm-5 col-lg-offset-1 col-lg-5">
             <h4>Percentage of State at a Particular Drought Level</h4>
         </div>
-        <div id="color_legend" class="col-xs-12 col-sm-5 col-lg-5">
+
+        <div id="circ_legend" class="col-xs-12 col-sm-5 col-lg-5">
+            <h4>Interpreting the Drought Circles</h4>
+        </div>
+
+        <div id="color_legend" class="col-xs-12 col-offset-sm-1 col-sm-5 col-lg-offset-1 col-lg-5">
             <h4 class="offset">Drought Levels</h4>
         </div>
 
-        <div id="full-info" class="col-sm-12 col-lg-12">
-            <svg id="full-info-legend" class="col-xs-12 col-sm-12 col-lg-offset-2 col-lg-10"></svg>
-        </div>
+
 
         <div class="col-sm-12 col-lg-12">
             <footer>
@@ -73,8 +75,6 @@
                 <h3 class="text-center">Data Sources</h3>
                 <ul class="list-unstyled text-center">
                     <li><a href="http://droughtmonitor.unl.edu/MapsAndData/GISData.aspx">United States Drought Monitor</a></li>
-                    <li>US county bounderies by<a href="http://eric.clst.org/Stuff/USGeoJSON">Eric Celeste</a>, derived from
-                        <a href="https://ask.census.gov/faq.php?id=5000&faqId=431">United States Census Bureau</a> data</li>
                 </ul>
             </div>
         </div>
@@ -88,7 +88,7 @@
 <!--<script src="js/assets/swoopy-drag/swoopy-drag.min.js"></script>-->
 <script src="js/custom.js"></script>
 <script type="text/javascript">
-    var _gaq = _gaq || [];
+ /*   var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-47256145-1']);
     _gaq.push(['_trackPageview']);
 
@@ -96,7 +96,7 @@
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+    })(); */
 </script>
 </body>
 </html>

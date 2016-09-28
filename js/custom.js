@@ -137,6 +137,7 @@ queue()
 
         pctLegend("#pct_legend");
         colorLegend("#color_legend", colors);
+        compareLevels(colors);
 
         // Seasons
         var us_all = data.filter(function(d) {
@@ -309,7 +310,7 @@ queue()
             var compare = document.querySelectorAll(selector + ' svg');
             if(compare.length) return;
 
-            var keys = ['Abnormally Dry', 'Moderate', 'Severe', 'Extreme', 'Exceptional'];
+            var keys = ['Abnormally Dry (D0)', 'Moderate (D1)', 'Severe (D2)', 'Extreme (D3)', 'Exceptional (D4)'];
             var width = 450;
 
             var legend = d3.select(selector)
@@ -341,16 +342,42 @@ queue()
                         .attr("height",30)
                         .attr("width", d.length * 50)
                         .text(d);
-                    var add = i == 0 ? 50 : 40;
+                    var add = i == 0 ? 55 : 45;
                     j += (d.length * 5) + add;
                 });
         }
 
-    var rows = d3.selectAll('.row');
-    rows.classed('opaque', false);
-    rows.classed('hide', false);
-    d3.selectAll('#load').classed('hide', true);
+        function compareLevels(colors) {
+            var compare = document.querySelectorAll('#circ_legend svg');
+            if(compare.length) return;
+
+            var radii = _.range(5, 35, 5).reverse();
+
+            var circ_legend = d3.select("#circ_legend")
+                .append("svg")
+                .attr("width", 155)
+                .attr("height", 75)
+                .attr("class", "legend")
+                .translate([35, 20]);
+
+            for(var i=0; i<5; i++) {
+                circ_legend.append("circle")
+                    .attr("cx", 50)
+                    .attr("cy", 15)
+                    .attr("r", function(d) {
+                        return radii[i];
+                    }).style("stroke", function(d) {
+                        return colors[i];
+                    });
+            }
+        }
+
+
 
     render();
     window.addEventListener('resize', render);
+
+    var rows = d3.selectAll('.row');
+    rows.classed('hide', false);
+    d3.selectAll('#load').classed('hide', true);
 });
