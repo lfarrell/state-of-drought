@@ -356,35 +356,35 @@ queue()
                     "xVal": 125,
                     "yVal": 100,
                     "path": "M-58,-109L5,-108",
-                    "text": "DO",
+                    "text": "Abnormally Dry (D0)",
                     "textOffset": [9, -103]
                 },
                 {
                     "xVal": 125,
                     "yVal": 100,
                     "path": "M-53,-97L6,-95",
-                    "text": "D1",
+                    "text": "Moderate Drought (D1)",
                     "textOffset": [9, -88]
                 },
                 {
                     "xVal": 125,
                     "yVal": 100,
                     "path": "M-55,-89L4,-80",
-                    "text": "D2",
+                    "text": "Severe Drought (D2)",
                     "textOffset": [9, -73]
                 },
                 {
                     "xVal": 125,
                     "yVal": 100,
                     "path": "M-61,-84L4,-65",
-                    "text": "D3",
+                    "text": "Extreme Drought (D3)",
                     "textOffset": [9, -58]
                 },
                 {
                     "xVal": 125,
                     "yVal": 100,
                     "path": "M-71,-76L3,-51",
-                    "text": "D4",
+                    "text": "Exceptional Drought (D4)",
                     "textOffset": [9, -43]
                 }
             ];
@@ -393,8 +393,8 @@ queue()
 
             var circ_legend = d3.select("#circ_legend")
                 .append("svg")
-                .attr("width", 255)
-                .attr("height", 175)
+                .attr("width", 325)
+                .attr("height", 100)
                 .attr("class", "legend")
                 .translate([35, 20]);
 

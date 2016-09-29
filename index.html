@@ -24,25 +24,19 @@
     </div>
     <div class="row charts hide">
         <div class="col-xs-12 col-offset-sm-1 col-sm-10 col-lg-offset-1 col-lg-10">
-            <p>Drought is often seen as problem that mainly affects the western United States</p>
-            <p>Snow comes in a variety of forms. It can be light and airy, almost dry, or it can heavy and dense. For example,
-                light, fluffy snow that measures four feet deep might actually have the
-                same volume of water as heavier, denser snow that is two feet deep.To account
-                for this variation a measure called
-                <a href="http://www.nrcs.usda.gov/wps/portal/nrcs/detail/or/snow/?cid=nrcs142p2_046155"
-                   target="_blank">snow water equivalence</a> is used to normalize the amount of liquid water
-                in a given level of snow.</p>
-            <p>Compare the average snow/water levels by year and elevation. The general trend is towards drier
-                conditions, but wet years are interspersed with drier years. Notice that 2011 was a very wet year
-                across all elevations, while 2015 was extremely dry.</p>
+            <p>Drought is often seen as problem that mainly affects the western United States. However, it affects
+            the entire country. Severe droughts have hit not only California, but places as diverse as Texas, Massachusetts and
+             Georgia. In fact in 2013, Atlanta only had a few months water supply left.</p>
+            <p>Droughts can linger for years as in California's current drought, or end abruptly. Notice how Texas drought levels
+            plummeted in June 2015 due to record rainfall in late May.</p>
         </div>
         <div id="slider" class="text-center">
 
         </div>
         <div id="map" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <button id="play">Play</button>
-            <button id="pause">Pause</button>
-            <button id="stop">Stop</button>
+            <button class="btn btn-default" id="play">Play</button>
+            <button class="btn btn-default" id="pause">Pause</button>
+            <button class="btn btn-default" id="stop">Stop</button>
             <h2 class="text-center" id="date-text">January 2000</h2>
         </div>
 
@@ -58,8 +52,43 @@
             <h4 class="offset">Drought Level Colors</h4>
         </div>
 
-
-
+        <div class="col-xs-12 col-offset-sm-1 col-sm-10 col-lg-offset-1 col-lg-10">
+        <h3>Drought Effects</h3>
+            <p>The <a href="http://droughtmonitor.unl.edu/AboutUs/ClassificationScheme.aspx">United States Drought Monitor</a> defines the effects of various drought levels as follows:</p>
+            <ul class="list-unstyled">
+                <li>DO
+                    <ul>
+                        <li>Short-term dryness slowing planting, growth of crops or pastures</li>
+                    </ul>
+                </li>
+                <li>D1
+                    <ul>
+                        <li>Some damage to crops, pastures</li>
+                        <li>Streams, reservoirs, or wells low, some water shortages developing or imminent</li>
+                        <li> Voluntary water-use restrictions requested</li>
+                    </ul>
+                </li>
+                <li>D2
+                    <ul>
+                        <li>Crop or pasture losses likely</li>
+                        <li>Water shortages common</li>
+                        <li>Water restrictions imposed</li>
+                    </ul>
+                </li>
+                <li>D3
+                    <ul>
+                        <li>Major crop/pasture losses</li>
+                        <li>Widespread water shortages or restrictions</li>
+                    </ul>
+                </li>
+                <li>D4
+                    <ul>
+                        <li>Exceptional and widespread crop/pasture losses</li>
+                        <li>Shortages of water in reservoirs, streams, and wells creating water emergencies</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
         <div class="col-sm-12 col-lg-12">
             <footer>
                 <ul class="list-unstyled">
@@ -88,7 +117,7 @@
 <script src="js/swoopy-drag/swoopy-drag.min.js"></script>
 <script src="js/custom.js"></script>
 <script type="text/javascript">
-    var _gaq = _gaq || [];
+ /*   var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-47256145-1']);
     _gaq.push(['_trackPageview']);
 
@@ -96,7 +125,7 @@
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+    })(); */
 </script>
 </body>
 </html>
