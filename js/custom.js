@@ -311,7 +311,7 @@ queue()
             if(compare.length) return;
 
             var keys = ['Abnormally Dry (D0)', 'Moderate (D1)', 'Severe (D2)', 'Extreme (D3)', 'Exceptional (D4)'];
-            var width = 450;
+            var width = 600;
 
             var legend = d3.select(selector)
                 .append("svg")
@@ -351,12 +351,50 @@ queue()
             var compare = document.querySelectorAll('#circ_legend svg');
             if(compare.length) return;
 
+            var annotations = [
+                {
+                    "xVal": 125,
+                    "yVal": 100,
+                    "path": "M-58,-109L5,-108",
+                    "text": "DO",
+                    "textOffset": [9, -103]
+                },
+                {
+                    "xVal": 125,
+                    "yVal": 100,
+                    "path": "M-53,-97L6,-95",
+                    "text": "D1",
+                    "textOffset": [9, -88]
+                },
+                {
+                    "xVal": 125,
+                    "yVal": 100,
+                    "path": "M-55,-89L4,-80",
+                    "text": "D2",
+                    "textOffset": [9, -73]
+                },
+                {
+                    "xVal": 125,
+                    "yVal": 100,
+                    "path": "M-61,-84L4,-65",
+                    "text": "D3",
+                    "textOffset": [9, -58]
+                },
+                {
+                    "xVal": 125,
+                    "yVal": 100,
+                    "path": "M-71,-76L3,-51",
+                    "text": "D4",
+                    "textOffset": [9, -43]
+                }
+            ];
+
             var radii = _.range(5, 35, 5).reverse();
 
             var circ_legend = d3.select("#circ_legend")
                 .append("svg")
-                .attr("width", 155)
-                .attr("height", 75)
+                .attr("width", 255)
+                .attr("height", 175)
                 .attr("class", "legend")
                 .translate([35, 20]);
 
@@ -370,6 +408,15 @@ queue()
                         return colors[i];
                     });
             }
+
+            var swoopy = d3.swoopyDrag()
+                .x(function(d){ return d.xVal; })
+                .y(function(d){ return d.yVal; })
+                .draggable(0);
+
+            swoopy.annotations(annotations);
+
+            d3.select("#circ_legend svg").append('g.annotations').call(swoopy);
         }
 
 
