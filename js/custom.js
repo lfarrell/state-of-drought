@@ -231,6 +231,10 @@ queue()
                    .style("opacity", 0);
             });
         }
+
+        var rows = d3.selectAll('.row');
+        rows.classed('hide', false);
+        d3.selectAll('#load').classed('hide', true);
     }, 400);
 
     function findSeason(value) {
@@ -423,8 +427,4 @@ queue()
 
     render();
     window.addEventListener('resize', render);
-
-    var rows = d3.selectAll('.row');
-    rows.classed('hide', false);
-    d3.selectAll('#load').classed('hide', true);
 });
