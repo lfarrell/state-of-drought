@@ -139,36 +139,6 @@ queue()
         colorLegend("#color_legend", colors);
         compareLevels(colors);
 
-        // Seasons
-        var us_all = data.filter(function(d) {
-            return d.state === 'us_all';
-        });
-
-        us_all.forEach(function(d) {
-            d.season = findSeason(d.month);
-        });
-
-        var ca_all = data.filter(function(d) {
-            return d.state === 'CA';
-        });
-        var nested = d3.nest()
-            .key(function(d) { return d.month; })
-            .rollup(function(values) {
-                return valueList(values);
-            })
-            .entries(ca_all);
-
-        function valueList(values) {
-            return {
-                nothing: d3.mean(values, function(d) {return d.nothing; }),
-                "D0": d3.mean(values, function(d) {return d["D0"]; }),
-                "D1": d3.mean(values, function(d) {return d["D1"]; }),
-                "D2": d3.mean(values, function(d) {return d["D2"]; }),
-                "D3": d3.mean(values, function(d) {return d["D3"]; }),
-                "D4": d3.mean(values, function(d) {return d["D4"]; })
-            };
-        }
-
         function stringDate(month) {
             var month_names = ["January", "February", "March",
                 "April", "May", "June",
@@ -359,37 +329,37 @@ queue()
                 {
                     "xVal": 125,
                     "yVal": 100,
-                    "path": "M-58,-109L5,-108",
+                    "path": "M-30,-89L5,-89",
                     "text": "Abnormally Dry (D0)",
-                    "textOffset": [9, -103]
+                    "textOffset": [11, -85]
                 },
                 {
                     "xVal": 125,
                     "yVal": 100,
-                    "path": "M-53,-97L6,-95",
+                    "path": "M-18,-71L3,-71",
                     "text": "Moderate Drought (D1)",
-                    "textOffset": [9, -88]
+                    "textOffset": [11, -65]
                 },
                 {
                     "xVal": 125,
                     "yVal": 100,
-                    "path": "M-55,-89L4,-80",
+                    "path": "M-21,-61L3,-52",
                     "text": "Severe Drought (D2)",
-                    "textOffset": [9, -73]
+                    "textOffset": [11, -45]
                 },
                 {
                     "xVal": 125,
                     "yVal": 100,
-                    "path": "M-61,-84L4,-65",
+                    "path": "M-26,-56L4,-34",
                     "text": "Extreme Drought (D3)",
-                    "textOffset": [9, -58]
+                    "textOffset": [11, -25]
                 },
                 {
                     "xVal": 125,
                     "yVal": 100,
-                    "path": "M-71,-76L3,-51",
+                    "path": "M-36,-51L5,-14",
                     "text": "Exceptional Drought (D4)",
-                    "textOffset": [9, -43]
+                    "textOffset": [11, -5]
                 }
             ];
 
@@ -399,8 +369,9 @@ queue()
                 .append("svg")
                 .attr("width", 325)
                 .attr("height", 100)
-                .attr("class", "legend")
-                .translate([35, 20]);
+                .append("g")
+                .attr("class", "color-legend")
+                .translate([35, 25]);
 
             for(var i=0; i<5; i++) {
                 circ_legend.append("circle")
