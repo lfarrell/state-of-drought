@@ -5,7 +5,8 @@ $files = scandir($path);
 $fh = fopen("all_state.csv", "wb");
 //$fg = fopen("all_county.csv", "a");
 $headers = ['state', 'fips','year', 'month', 'nothing','D0','D1','D2','D3','D4'];
-fputcsv($fh, $headers);
+$headers_alt = ['state', 'year', 'month', 'nothing','D0','D1','D2','D3','D4'];
+fputcsv($fh, $headers_alt);
 //fputcsv($fg, $headers);
 
 foreach($files as $file) {

@@ -18,7 +18,7 @@ queue()
       //  });
 
         d.date = date_parse(d.month + '-' + d.year);
-        d.season = findSeason(d.month);
+      //  d.season = findSeason(d.month);
 
        /* if(coords !== undefined) {
             d.lat = coords.lat;
@@ -207,7 +207,7 @@ queue()
         d3.selectAll('#load').classed('hide', true);
     }, 400);
 
-    function findSeason(value) {
+ /*   function findSeason(value) {
         var month = parseInt(value);
 
         switch(month) {
@@ -234,7 +234,7 @@ queue()
             default:
                 return "unknown";
         }
-    }
+    } */
 
     function pctLegend(selector) {
         var compare = document.querySelectorAll(selector + ' svg');

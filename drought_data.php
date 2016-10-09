@@ -55,12 +55,11 @@ $states = array(
     'WI'=>'Wisconsin',
     'WY'=>'Wyoming',
 );
-
 /*
 $types = ['us', 'state', 'county'];
 $week = 0;
-$download_date = '20000104';
-while($download_date < '20160830') {
+$download_date = '20160906';
+while($download_date < '20160930') {
     if($week > 0) {
         $download_date = date('Ymd', strtotime('+1 Week', strtotime($download_date)));
     }
@@ -86,24 +85,24 @@ while($download_date < '20160830') {
 
 $headers = ['state','nothing','D0','D1','D2','D3','D4', 'year', 'month'];
 $county_headers = ['fips','county','state','nothing','D0','D1','D2','D3','D4', 'year', 'month'];
-
+/*
 foreach($states as $abbrev => $state) {
     $fg = fopen("data/$abbrev.csv", "wb");
     fputcsv($fg, $headers);
     fclose($fg);
 
-    $fx = fopen("data/$abbrev-counties.csv", "wb");
+    $fx = fopen("data/$abbrev-counties.csv", "a");
     fputcsv($fx, $county_headers);
     fclose($fx);
 }
-
+*/
 $files = scandir('raw_data');
 
-$fh = fopen('data/us_all.csv', 'wb');
+$fh = fopen('data/us_all.csv', 'a');
 fputcsv($fh, $headers);
 
 foreach($files as $file) {
-    if(is_dir($file)) { continue; }
+    if(is_dir($file) || !preg_match('/201609/', $file)) { continue; }
 
     if(preg_match('/^us/', $file)) {
         if (($handle = fopen("raw_data/$file", "r")) !== FALSE) {
