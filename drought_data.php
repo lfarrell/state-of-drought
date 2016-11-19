@@ -58,8 +58,8 @@ $states = array(
 /*
 $types = ['us', 'state', 'county'];
 $week = 0;
-$download_date = '20160906';
-while($download_date < '20160930') {
+$download_date = '20161004';
+while($download_date < '20161031') {
     if($week > 0) {
         $download_date = date('Ymd', strtotime('+1 Week', strtotime($download_date)));
     }
@@ -94,15 +94,15 @@ foreach($states as $abbrev => $state) {
     $fx = fopen("data/$abbrev-counties.csv", "a");
     fputcsv($fx, $county_headers);
     fclose($fx);
-}
-*/
+} */
+
 $files = scandir('raw_data');
 
 $fh = fopen('data/us_all.csv', 'a');
 fputcsv($fh, $headers);
 
 foreach($files as $file) {
-    if(is_dir($file) || !preg_match('/201609/', $file)) { continue; }
+    if(is_dir($file) || !preg_match('/201610/', $file)) { continue; }
 
     if(preg_match('/^us/', $file)) {
         if (($handle = fopen("raw_data/$file", "r")) !== FALSE) {
